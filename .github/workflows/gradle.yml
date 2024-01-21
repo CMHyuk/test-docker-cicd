@@ -62,6 +62,6 @@ jobs:
           envs: GITHUB_SHA
           script: |
             sudo docker rm -f $(docker ps -qa)
-            sudo docker pull ${{ secrets.DOCKER_REPO }}
+            sudo docker pull cmhyuk/${{ secrets.DOCKER_REPO }}
             docker-compose up -d
             docker image prune -f
