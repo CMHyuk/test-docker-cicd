@@ -4,7 +4,7 @@ version: '3'
 
   web:
     container_name: web
-    image: song229/springboot-github-actions-test
+    image: cmhyuk/test
     expose:
       - 8080
     ports:
