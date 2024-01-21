@@ -59,6 +59,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ubuntu
           key: ${{ secrets.KEY }}
+          port: 8080
           envs: GITHUB_SHA
           script: |
             sudo docker rm -f $(docker ps -qa)
