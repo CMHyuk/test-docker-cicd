@@ -42,7 +42,6 @@ jobs:
           ./gradlew clean build -x test
 
       # dockerfile을 통해 이미지를 빌드하고, 이를 docker repo로 push 합니다.
-      # 이 때 사용되는 ${{ secrets.DOCKER_REPO }}/directors-dev 가 위에서 만든 도커 repository 입니다.
       - name: Docker build & push to docker repo
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
@@ -57,8 +56,9 @@ jobs:
         id: deploy
         with:
           host: ${{ secrets.HOST }}
-          username: ubuntu
+          username: ec2-user
           key: ${{ secrets.KEY }}
+          port: 22
           script: |
             sudo docker rm -f $(docker ps -qa)
             sudo docker pull cmhyuk/${{ secrets.DOCKER_REPO }}
