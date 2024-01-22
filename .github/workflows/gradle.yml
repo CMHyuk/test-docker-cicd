@@ -59,6 +59,7 @@ jobs:
           username: ec2-user
           key: ${{ secrets.KEY }}
           port: 22
+          passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             sudo docker rm -f $(docker ps -qa)
             sudo docker pull cmhyuk/${{ secrets.DOCKER_REPO }}
